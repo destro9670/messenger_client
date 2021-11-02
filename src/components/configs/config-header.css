@@ -1,0 +1,21 @@
+.config-header{
+    background: blue;
+    width: 500px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.config-header-button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.config-body{
+    width: 500px;
+    height: 550px;
+    overflow-y: scroll;
+    background: aliceblue;
+}
