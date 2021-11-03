@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import TemplatePage from "./pages/TemplatePage";
+import './style.css';
+import './template-config-page.css';
 
 
 const App: FC = () => {

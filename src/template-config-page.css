@@ -1,0 +1,22 @@
+table{
+    width: 100%;
+    height: 100%;
+    border: 1px solid aliceblue;
+}
+
+.config {
+    width: 20% ;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.config-bg{
+    background: aliceblue;
+}
+
+
+.template {
+    width: 60%;
+}
+
+
