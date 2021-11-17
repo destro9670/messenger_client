@@ -1,0 +1,165 @@
+.block2{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    max-width: 100% !important;
+    max-height: 100% !important;
+    margin: auto;
+    margin-top: 4%;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.msg-header{
+    width: 100%;
+    height: 5%;
+    margin: 0;
+    border-bottom: none;
+    display: inline-block;
+    background-color: #007bff;
+}
+
+.active{
+    width: 180px;
+    float: left;
+    margin-top: 10px;
+}
+
+.active h4{
+    font-size: 20px;
+    margin-left: 10px;
+    color: #fff;
+}
+
+.active h6{
+    font-size: 10px;
+    margin-left: 10px;
+    line-height: 2px;
+    color: #fff;
+}
+
+.chat-page{
+    pading: 0 0 50px 0;
+}
+
+.msg-inbox{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.chats{
+    padding: 20px 0px 0px 10px;
+}
+.msg-page{
+    height: 685px;
+    overflow-y: auto ;
+}
+
+.received-msg{
+    display: inline-block;
+    padding: 0 0 0 10px;
+    vertical-align: top;
+    width: 92%;
+}
+.received-msg-inbox{
+    width: 57%
+}
+
+.received-msg-inbox p{
+    background: #efefef none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #646464;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px 10px 5px 12px;
+    whidth: 100%;
+}
+.time{
+    color: #777;
+    display: block;
+    font-size: 12px;
+    margin: 8px 0 0;
+}
+
+.outgoing-chats{
+    overflow: hidden;
+    margin-top:26px;
+    margin-bottom:26px;
+}
+
+.outgoing-chats-msg p{
+    background: #007bff none repeat scroll 0 0;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    padding: 5px 10px 5px 12px;
+    width: 100%;
+}
+
+.outgoing-chats-msg{
+    float: left;
+    width: 46%;
+    margin-left: 50% ;
+}
+
+.msg-bottom{
+    position: relative;
+    height: 58px;
+    background-color: #007bff;
+}
+
+.input-group-c{
+    float: right;
+    margin-top: 13px;
+    margin-right: 35px;
+    outline: none !important;
+    border-radius: 20px;
+    width: 90% !important;
+    background-color: white;
+    display: flex;
+    flex-flow: row nowrap;
+
+}
+
+.form-control-c{
+    border: none !important;
+    border-radius: 20px 0 0 20px !important;
+    width: 90%;
+}
+.input-group-text{
+    background: transparent !important;
+    border: none !important;
+}
+
+.input-group-c .fa {
+    color: #007bff;
+    float: right;
+}
+
+.form-control-c:focus{
+    border-color: none !important;
+    box-shadow: none !important;
+    border-radius: 20px;
+
+}
+.msg-btn-container{
+    background-color: #007bff;
+    width: 100%;
+    height: 61px;
+
+}
+.btn-c{
+    border-radius: 0 20px 20px 0;
+    width: 80px !important;
+    height: 40px !important;
+    float: left;
+    margin: 0;
+}
+
+
+
+

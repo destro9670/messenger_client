@@ -31,7 +31,8 @@ const Header: React.FC = () => {
             return (
                 <header>
                     <nav className=" navbar  navbar-h navbar-expand  row">
-                        <div className="col-10"></div>
+                        <div className="col-1"></div>
+                        <div className="col-9 username"> username</div>
                         <button className="btn btn-light btn-sm col-1" onClick={logout}>Logout
                         </button>
                         <div className="col-1"></div>

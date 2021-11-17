@@ -5,6 +5,9 @@
 body{
     min-width: 1400px;
 }
+.username{
+    color: white;
+}
 .cbody {
     min-width: 800px;
     max-width: 1200px;

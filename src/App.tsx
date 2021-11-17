@@ -5,9 +5,10 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Header from "./components/Header";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
-import TemplatePage from "./pages/TemplatePage";
+import TemplatePage from "./pages/MainPage";
 import './style.css';
 import './template-config-page.css';
+import MainPage from "./pages/MainPage";
 
 
 const App: FC = () => {
@@ -20,6 +21,9 @@ const App: FC = () => {
             store.login(email, password).then(
                 (resp)=>{
                     store.setAuth(true)
+                    new Promise(resolve => setTimeout(resolve, 500)).then(()=>{
+                        window.location.reload()
+                    })
                 }
             );
 
@@ -47,10 +51,10 @@ const App: FC = () => {
             <BrowserRouter>
                 <Header/>
                 <Switch>
-                    <Route path="/templates" exact>
-                        <TemplatePage/>
+                    <Route path="/" exact>
+                        <MainPage/>
                     </Route>
-                    <Redirect to="/templates"/>
+                    <Redirect to="/"/>
                 </Switch>
             </BrowserRouter>
         )

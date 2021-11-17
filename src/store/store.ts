@@ -1,9 +1,6 @@
 import {IUser} from "../models/IUser";
 import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
-import axios from "axios";
-import {AuthResponse} from "../models/response/AuthResponse";
-import {API_URL} from "../http";
 
 
 export default class Store {
@@ -30,12 +27,16 @@ export default class Store {
 
     async login(email: string, password: string) {
         try {
+            console.log()
 
             AuthService.login(email, password).then((response) => {
-                    console.log(response);
+                    console.log(response.data);
                     localStorage.setItem('token', response.data.accessToken);
-                    this.setUser(response.data.user);
+                    localStorage.setItem('refresh', response.data.refreshToken);
+                    //this.setUser(response.data.user);
                     console.log(response)
+                    this.setAuth(true)
+                    window.location.reload()
                     return response;
                 }
             );
@@ -52,9 +53,9 @@ export default class Store {
 
         try {
             const response = await AuthService.register(email, password);
-            localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('token', response.data.token);
             this.setAuth(true);
-            this.setUser(response.data.user);
+            //this.setUser(response.data.user);
         } catch (e) {
             console.log(e.response?.data?.message);
         }
@@ -62,8 +63,9 @@ export default class Store {
 
     async logout() {
         try {
-            await AuthService.logout();
+            AuthService.logout().then()
             localStorage.removeItem('token');
+            localStorage.removeItem('refresh');
 
             this.setAuth(false);
             this.setUser({} as IUser);
@@ -75,18 +77,16 @@ export default class Store {
         this.setLoading(true);
         try {
             if (localStorage.getItem('token')) {
-                const response = await axios.post<AuthResponse>(`${API_URL}/chek-auth`);
-                console.log("resp checkAuth " + response)
+                const response = await AuthService.checkAuth()
+                console.log("resp checkAuth " + response.data.username)
                 this.setAuth(true);
-                this.setUser(response.data.user);
+                //this.setUser(response.data.user);
             }
         } catch (e) {
             console.log(e.response?.data?.message)
         } finally {
             this.setLoading(false);
         }
-
-
     }
 
 }
