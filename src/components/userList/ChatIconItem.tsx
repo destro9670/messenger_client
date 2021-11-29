@@ -1,9 +1,10 @@
 import React, {FC, useEffect} from 'react';
 import {IChatIcon} from "../../models/userList/IChatIcon";
+import {IUserMin} from "../../models/userList/IUserMin";
 
 interface UserItemProps {
     chatIcon: IChatIcon
-    select(uuid: string): void
+    select(uuid: IUserMin): void
 
 }
 
@@ -12,7 +13,7 @@ const ChatIconItem: FC<UserItemProps> = ({chatIcon, select/*, onClick*/}) => {
 
     return (
         <div className=" row m-1 mt-4 p-3 shadow"
-        onClick={()=>{select(chatIcon.room.uuid)}}>
+        onClick={()=>{select(chatIcon.room)}}>
             <div className="col-9">
                 <div>
                     {chatIcon.room.name}

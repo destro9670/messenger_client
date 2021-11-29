@@ -50,11 +50,12 @@
 }
 
 .chats{
-    padding: 20px 0px 0px 10px;
+    padding: 0px 0px 0px 10px;
 }
 .msg-page{
-    height: 685px;
+    height: 700px;
     overflow-y: auto ;
+    margin: 0;
 }
 
 .received-msg{

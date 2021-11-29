@@ -8,24 +8,17 @@ import {IMessage} from "../../models/IMessage";
 import List from "../List";
 import ChatIconItem from "./ChatIconItem";
 import ChatIconService from "../../services/ChatIconService";
+import {IUserMin} from "../../models/userList/IUserMin";
 
 
 interface ChatIconProps {
-    select(uuid: string): void
+    select(uuid: IUserMin): void
+    chatIcons: IChatIcon[]
 }
 
-const ChatIcon: FC<ChatIconProps> = ({select}) => {
+const ChatIcon: FC<ChatIconProps> = ({select,chatIcons}) => {
 
-    const [chatIcons, setChatIcons] = useState<IChatIcon[]>([])
-
-    useEffect(() => {
-        ChatIconService.getIcons().then((res)=>{
-            console.log(res.data)
-            setChatIcons(res.data)
-        })
-    }, [])
-
-    const onClick = (uuid: string) =>{
+    const onClick = (uuid: IUserMin) =>{
         select(uuid)
     }
 

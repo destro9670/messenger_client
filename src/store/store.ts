@@ -1,10 +1,9 @@
-import {IUser} from "../models/IUser";
 import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
 
 
 export default class Store {
-    user = {} as IUser;
+    user : string = "";
     isAuth = false;
     isLoading = false;
 
@@ -16,7 +15,7 @@ export default class Store {
         this.isAuth = bool;
     }
 
-    setUser(user: IUser) {
+    setUser(user: string) {
         this.user = user;
     }
 
@@ -33,7 +32,7 @@ export default class Store {
                     console.log(response.data);
                     localStorage.setItem('token', response.data.accessToken);
                     localStorage.setItem('refresh', response.data.refreshToken);
-                    //this.setUser(response.data.user);
+                    this.setUser(response.data.username);
                     console.log(response)
                     this.setAuth(true)
                     window.location.reload()
@@ -55,7 +54,7 @@ export default class Store {
             const response = await AuthService.register(email, password);
             localStorage.setItem('token', response.data.token);
             this.setAuth(true);
-            //this.setUser(response.data.user);
+            this.setUser(response.data.username);
         } catch (e) {
             console.log(e.response?.data?.message);
         }
@@ -68,7 +67,7 @@ export default class Store {
             localStorage.removeItem('refresh');
 
             this.setAuth(false);
-            this.setUser({} as IUser);
+            this.setUser("" as string);
         } catch (e) {
         }
     }
@@ -80,7 +79,7 @@ export default class Store {
                 const response = await AuthService.checkAuth()
                 console.log("resp checkAuth " + response.data.username)
                 this.setAuth(true);
-                //this.setUser(response.data.user);
+                this.setUser(response.data.username);
             }
         } catch (e) {
             console.log(e.response?.data?.message)

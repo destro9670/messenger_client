@@ -2,12 +2,14 @@ import React, {FC, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import ChatIconService from "../../services/ChatIconService";
 import "./chat_icon.css"
+import {IUserMin} from "../../models/userList/IUserMin";
+import {IChatIcon} from "../../models/userList/IChatIcon";
 
 interface AddUserFormProps {
-    onAdd(title: string): void
+    onAdd(user: IChatIcon): void
 }
 
-export const AddUserForm: FC/*<AddUserFormProps>*/ = props => {
+export const AddUserForm: FC<AddUserFormProps> = ({onAdd}) => {
 
     const [username, setUsername] = useState<string>('')
 
@@ -26,8 +28,8 @@ export const AddUserForm: FC/*<AddUserFormProps>*/ = props => {
 
     const btnClick = () => {
         //props.onAdd()
-        ChatIconService.addNew(username).then(()=>{
-
+        ChatIconService.addNew(username).then((res)=>{
+            onAdd(res.data)
         })
     }
 

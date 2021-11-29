@@ -1,20 +1,20 @@
 import React, {FC, useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import "./style.css"
-import {IChatIcon} from "../../models/userList/IChatIcon";
-import ChatIconService from "../../services/ChatIconService";
+import {IUserMin} from "../../models/userList/IUserMin";
 
 
-interface ChatIconProps {
+interface ChatHeaderProps {
+    user: IUserMin
 }
 
-const ChatHeader: FC<ChatIconProps> = () => {
+const ChatHeader: FC<ChatHeaderProps> = ({user}) => {
 
     return (
         <React.Fragment>
             <div className="msg-header">
                 <div className="active">
-                    <h4>John Lewis</h4>
+                    <h4>{user.name}</h4>
                 </div>
             </div>
         </React.Fragment>

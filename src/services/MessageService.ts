@@ -9,7 +9,7 @@ export default class MessageService{
         return $api.get<IMessage[]>(`${API_URL}/messages?roomUUID=${roomUUID}`);
     }
 
-    static async addNew(username: string): Promise<AxiosResponse>{
-        return $api.post<AuthResponse>(`${API_URL}/users`, {username})
+    static async send(roomUUID: string, message: string): Promise<AxiosResponse<IMessage>>{
+        return $api.post<IMessage>(`${API_URL}/messages`,{message, roomUUID})
     }
 }

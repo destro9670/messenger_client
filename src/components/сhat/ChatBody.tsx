@@ -3,12 +3,22 @@ import {observer} from "mobx-react-lite";
 import "./style.css"
 import {IChatIcon} from "../../models/userList/IChatIcon";
 import ChatIconService from "../../services/ChatIconService";
+import List from "../List";
+import {IUser} from "../../models/IUser";
+import {IMessage} from "../../models/IMessage";
+import MessageService from "../../services/MessageService";
+import ChatIconItem from "../userList/ChatIconItem";
+import ChatItem from "./ChatItem";
+import {IUserMin} from "../../models/userList/IUserMin";
 
 
-interface ChatIconProps {
+interface ChatBodyProps {
+    user: IUserMin;
+    messages: IMessage[]
 }
 
-const ChatHeader: FC<ChatIconProps> = () => {
+const ChatBody: FC<ChatBodyProps> = ({user, messages }) => {
+
 
     return (
         <React.Fragment>
@@ -16,49 +26,11 @@ const ChatHeader: FC<ChatIconProps> = () => {
                 <div className="msg-inbox">
                     <div className="chats">
                         <div className="msg-page">
-
-                            <div className="received-chats">
-                                <div className="received-msg">
-                                    <div className="received-msg-inbox">
-                                        <p>Hi !! This is message from Jhon Lewis</p>
-                                        <span className="time">11:01 PM | October 11</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="outgoing-chats">
-                                <div className="outgoing-chats-msg">
-                                    <p>Hi !! This is message from Jhon Lewis</p>
-                                    <span className="time">11:01 PM | October 11</span>
-                                </div>
-                            </div>
-
-                            <div className="received-chats">
-                                <div className="received-msg">
-                                    <div className="received-msg-inbox">
-                                        <p>Hi !! This is message from Jhon Lewis</p>
-                                        <span className="time">11:01 PM | October 11</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="outgoing-chats">
-                                <div className="outgoing-chats-msg">
-                                    <p>Hi !! This is message from Jhon Lewis</p>
-                                    <span className="time">11:01 PM | October 11</span>
-                                </div>
-                            </div>
-
-                            <div className="received-chats">
-                                <div className="received-msg">
-                                    <div className="received-msg-inbox">
-                                        <p>Hi !! This is message from Jhon Lewis</p>
-                                        <span className="time">11:01 PM | October 11</span>
-                                    </div>
-                                </div>
-                            </div>
-
-
+                            <List items={messages} renderItem={(message: IMessage) =>
+                                <ChatItem
+                                    msg={message}
+                                    key={message.date}
+                                />}/>
                         </div>
                     </div>
                 </div>
@@ -66,4 +38,4 @@ const ChatHeader: FC<ChatIconProps> = () => {
         </React.Fragment>
     )
 };
-export default observer(ChatHeader);
+export default observer(ChatBody);

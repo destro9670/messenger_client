@@ -6,28 +6,63 @@ import ChatIconService from "../../services/ChatIconService";
 import ChatHeader from "./ChatHeader";
 import ChatBody from "./ChatBody";
 import ChatMSG from "./ChatMSG";
+import {IUser} from "../../models/IUser";
+import {IUserMin} from "../../models/userList/IUserMin";
+import {ELOOP} from "constants";
+import {IMessage} from "../../models/IMessage";
+import MessageService from "../../services/MessageService";
 
 
 interface ChatIconProps {
+    user: IUserMin;
 }
 
-const Chat: FC<ChatIconProps> = () => {
+const Chat: FC<ChatIconProps> = ({user}) => {
 
-    const [chatIcons, setChatIcons] = useState<IChatIcon[]>([])
+    const [messages, setMessages] = useState<IMessage[]>([])
 
     useEffect(() => {
-        ChatIconService.getIcons().then((res) => {
+        if (user.uuid!=="")
+        MessageService.getMessage(user.uuid).then((res)=>{
             console.log(res.data)
-            setChatIcons(res.data)
+            setMessages(res.data)
+            console.log(messages)
+            var millisecondsToWait = 2000;
+            setTimeout(function() {
+                // Whatever you want to do after the wait
+            }, millisecondsToWait);
         })
-    }, [])
 
-    return (
-        <React.Fragment>
-            <ChatHeader/>
-            <ChatBody/>
-            <ChatMSG/>
-        </React.Fragment>
-    )
+    })
+
+    const send = (message: IMessage) => {
+      setMessages([...messages,message])
+    }
+
+    if (user.uuid!=="") {
+
+        return (
+            <React.Fragment>
+                <ChatHeader user={user}/>
+                <ChatBody user={user}
+                          messages={messages}/>
+                <ChatMSG user={user}
+                         send={send}/>
+            </React.Fragment>
+        )
+    } else {
+
+        const tmp: IUserMin = {
+            uuid: "",
+            name: ""
+        }
+
+        return (
+            <React.Fragment>
+                <ChatHeader user={tmp}/>
+            </React.Fragment>
+        )
+    }
+
 };
 export default observer(Chat);

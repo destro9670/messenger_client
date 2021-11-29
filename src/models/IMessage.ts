@@ -5,5 +5,5 @@ export interface IMessage{
     date: string;
     time:string;
     status: string;
-    from: IUser;
+    room: IUser;
 }
