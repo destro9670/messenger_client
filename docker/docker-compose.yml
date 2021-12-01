@@ -19,7 +19,7 @@ services:
       dockerfile: Dockerfile
       context: './nginx'
     ports:
-      - "8075:80"
+      - "80:8075"
     networks:
       - webreport-network-dev
   api:
@@ -27,8 +27,8 @@ services:
       dockerfile: Dockerfile
       context: './server'
     environment:
-      spring.datasource.url: "jdbc:postgresql://postgres:5433/thesis_messanger"
-      spring.flyway.url: "jdbc:postgresql://postgres:5433/thesis_messanger"
+      spring.datasource.url: "jdbc:postgresql://postgres:5432/thesis_messanger"
+      spring.flyway.url: "jdbc:postgresql://postgres:5432/thesis_messanger"
     networks:
       - webreport-network-dev
     depends_on:
