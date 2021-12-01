@@ -33,6 +33,8 @@ services:
       - webreport-network-dev
     depends_on:
       - "postgres"
+    ports:
+      - "8075:8075"
   client:
     stdin_open: true
     build:
@@ -40,6 +42,8 @@ services:
       context: ./client
     networks:
       - webreport-network-dev
+    ports:
+      - "3000:3000"
 networks:
   webreport-network-dev:
   #name: webreport-network
