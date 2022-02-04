@@ -2,7 +2,7 @@ import axios from 'axios';
 import {AuthResponse} from "../models/response/AuthResponse";
 
 //TODO(1)
-export const API_URL = `http://192.168.216.155:8075/api/v1`;
+export const API_URL = `http://localhost:8075/api/v1`;
 
 const $api = axios.create({
     baseURL: API_URL,
